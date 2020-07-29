@@ -1,0 +1,19 @@
+{
+  "name": "whoomies-parse-dashboard",
+  "version": "1.0.0",
+  "description": "About watching data from the whoomies env",
+  "main": "index.js",
+  "dependencies": {
+    "gulp": "^4.0.2",
+    "parse-dashboard": "^2.0.5"
+  },
+  "devDependencies": {
+    "dotenv": "^8.1.0"
+  },
+  "scripts": {
+    "start": "node -r dotenv/config app.js",
+    "test": "test"
+  },
+  "author": "Whoomies",
+  "license": "ISC"
+}
