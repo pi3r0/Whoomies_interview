@@ -5,32 +5,31 @@
  * @returns {[Comments]}
  */
 
-const findCommentsByMovie = async (moveiId, limit = 30) => {
-    if (moveiId === undefined) {
-        throw "Movie params must be set"
-    }
-    
-    let commentsForTheMovie = await allCommentsQuery(moveiId).find();
-    
-    return commentsForTheMovie === undefined ? [] : commentsForTheMovie
-}
+const findCommentsByMovie = async (movieId, limit = 30) => {
+  if (movieId === undefined) {
+    throw "Movie params must be set";
+  }
+
+  let commentsForTheMovie = await allCommentsQuery(movieId).find();
+
+  return commentsForTheMovie === undefined ? [] : commentsForTheMovie;
+};
 
 const allCommentsQuery = (movieId, limit) => {
- 
-  let commmentsQuery = new Parse.Query("Comments");
-  commmentsQuery.include(["movie"])
+  let commentsQuery = new Parse.Query("Comments");
+  commentsQuery.include(["movie"]);
 
-  if (moveiId !== undefined) {
+  if (movieId !== undefined) {
     let searchedMovie = new Parse.Object("Movies");
-    searchedMovie.id = moveiId;
+    searchedMovie.id = movieId;
     commentsQuery.equalTo("movie", searchedMovie);
   }
 
   if (limit !== undefined) {
-      commentsQuery.limit(limit);
+    commentsQuery.limit(limit);
   }
 
-  return commmentsQuery;
+  return commentsQuery;
 };
 
 module.exports = exports = { findCommentsByMovie };
