@@ -1,7 +1,5 @@
-server/.env
-server/node_modules/
-server/logs/
+.env
+node_modules/
 coverage/
 
-dashboard/.env
-dashboard/node_modules/
+server/logs/
