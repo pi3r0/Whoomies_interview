@@ -8,22 +8,53 @@ This project has two instances, the parse-server (/server) and the (/dashboard),
  
 1. See Parse documentation : https://parseplatform.org and more https://docs.parseplatform.org/js/guide/ on how deal with objects, queries. 
 2. Please fork the project and/or download the project to your own space, do not clone and push. 
+3. get use to mongoDB (create, user, import), requirement for parse is at least version 3.6
 3. Get use to NPM commands
 4. Get Postman or other API develpment tools to test your requests
 
 ## Instances 
+
+### Datasets 
+
+The datasets is a movie list with their comments provided in /datasets
+
+#### Installation Guide
+1. go to /datasets 
+2. create your mongo instance and import the 2 files in a new db
+3. create the admin user to get access from parse on it. 
 
 ### Dashboard 
 
 Parse provides a dashboard to display db objects, run jobs, send push, you can use it browse, search and test some queries. The 
 Once run. You don't have to do anything in this folder, it's only to help you, config is done. 
 
+#### Env file 
+```
+PORT= 4040
+
+# parse config (must be the same with /server/index.js)
+APP_NAMES=YOUR_APP_NAME
+HOST_ADDRESSES =YOUR_SERVER_ADDRESS
+APP_IDS =YOUR_PARSE_APP_ID
+MASTER_KEYS = YOUR_PARSE_MASTER_KEY
+JS_KEYS = YOUR_PARSE_JS_KEY
+FILE_KEYS= YOUR_PARSE_FILE_KEY
+
+#ADMIN (you can change here)
+ADMIN_WHOOMIES_USERS = local
+ADMIN_WHOOMIES_CREDS = test
+
+PARSE_DASHBOARD_TRUST_PROXY = true
+PARSE_DASHBOARD_ALLOW_INSECURE_HTTP = true
+```
+
 #### Installation Guide
 1. cd /dashboard/
-2. npm install
-3. npm run start
-4. open http://localhost:4040/ 
-5. use credential provided 
+2. config your env file
+3. npm install
+4. npm run start
+5. open http://localhost:4040/ 
+6. use credential provided 
 
 #### Credential 
 This is arbitrary you can change later
@@ -39,13 +70,35 @@ The user is "local" and pass is "test", if you want to change it go to /dashboar
 
 The core server is on /server, running parse-server instance, it's your workspace, where you will work. 
 
+#### Env file 
+```
+# gobal
+PORT= 1337
+ENV= "dev"
+
+# Mongo
+DB_USERNAME=  YOUR_DB_USERNAME
+DB_CRED= YOUR_DB_USER_PASS
+DB_HOST= YOUR_DB_HOST_ADDRESS
+
+# parse config
+APPNAME= YOUR_APP_NAME
+PARSE_APP_ID= YOUR_APP_ID
+PARSE_MASTER_KEY= YOUR_APP_MASTER_KEY
+PARSE_CLIENT_KEY=YOUR_APP_CLIENT_KEY
+PARSE_FILE_KEY= YOUR_APP_FILE_KEY
+PARSE_JAVASCRIPT_KEY=YOUR_APP_JS_KEY
+PARSE_REST_API_KEY=YOUR_APP_REST_KEY
+```
+
 #### Installation Guide
 1. cd /server/
-2. npm install
-3. npm run start
+2. set your env file
+3. npm install
+4. npm run start
 
 #### Config 
-Config on parse is highly is already set to communicate with the right mongo db, don't change it.  
+Config on parse is not set, you can choose each var like YOUR_APP_NAME and must be the same between the dashboard and the server
 
 ## Works 
 ### Project Overview
@@ -128,7 +181,7 @@ Bonus : Change the returning value from the previous cloud function with the new
 
 #### Movie comments number 
 
-The movie comments number are broke and unlike to the real comment, Code the job on /Movies (partailly coded) to set the right comment number to a particular movie.  
+The movie comments number is broken and not corresponding to the real comments number, Code the job on /Movies (partailly coded) to set the right comment number to a particular movie.  
 
 ### Triggers 
 
