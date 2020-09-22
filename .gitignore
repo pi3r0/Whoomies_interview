@@ -1,4 +1,7 @@
-.env
-node_modules/
+server/.env
+server/node_modules/
 server/logs/
 coverage/
+
+dashboard/.env
+dashboard/node_modules/
