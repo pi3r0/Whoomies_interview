@@ -1,4 +1,4 @@
-var ParseDashboard = require("parse-dashboard");
+const ParseDashboard = require("parse-dashboard");
 
 function toArray(string) {
   return string.split(" ");
